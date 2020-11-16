@@ -44,7 +44,7 @@ public class HumanPlayer extends SnakePlayer implements KeyListener {
             state.setOrientation(index,GameState.EAST);                   
         }
         else if(e.getKeyCode() == KeyEvent.VK_LEFT && lastOrientation!= GameState.EAST) {            
-            state.setOrientation(index,GameState.WEST);                   
+            state.setOrientation(index GameState.WEST);
         }
     }
 
