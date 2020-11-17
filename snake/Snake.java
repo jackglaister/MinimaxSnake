@@ -30,7 +30,7 @@ public class Snake {
         players[1] = new AStarPlayer(state, 1, this);
         players[2] = new RandomPlayer(state, 2, this);
         players[3] = new AStarPlayer(state, 3, this);
-
+        players[4] = new MinimaxSnake(state,3, this);
         for (int i = 0; i < nrPlayers; i++) {
             players[i].setDisplay(display);
         }
