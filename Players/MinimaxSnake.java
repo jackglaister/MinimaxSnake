@@ -1,5 +1,4 @@
 import java.util.List;
-import java.util.ArrayList;
 import snake.GameState;
 import snake.Snake;
 
@@ -15,7 +14,7 @@ public class MinimaxSnake extends SnakePlayer {
         super(state, index, game);
     }
 
-    public StaticNode GenerateTree(int level, StaticNode node, ArrayList<int> moves) {
+    public StaticNode GenerateTree(int level, StaticNode node, int[] moves) {
         if (level < 40) {
             int counter = level;
             counter++;
@@ -24,23 +23,25 @@ public class MinimaxSnake extends SnakePlayer {
                 int posx = state.getPlayerX(index).get(0);
                 int avoidable = state.getLastOrientation(index);
                 int[] fullpos = {1, 2, 3, 4};
+                int a = 0;
+                int[] Legal = new int[4]();
                 switch (move) {
                     case 1:
                         posy++;
-                        List<int> Legal = new List<int>();
                         for (int possible : fullpos) {
                             if (possible != avoidable) {
-                                Legal.add(possible);
+                                Legal[a] = possible;
+                                a++;
                             }
                         }
                         node.AddChild(GenerateTree(counter, new StaticNode(posy, posx), Legal));
                         break;
                     case 2:
-                        posx--;
-                        List<int> Legal = new List<int>();
+                        posx--;;
                         for (int possible : fullpos) {
                             if (possible != avoidable) {
-                                Legal.add(possible);
+                                Legal[a] = possible;
+                                a++;
                             }
                         }
                         node.AddChild(GenerateTree(counter, new StaticNode(posy, posx), Legal));
@@ -50,7 +51,8 @@ public class MinimaxSnake extends SnakePlayer {
                         List<int> Legal = new List<int>();
                         for (int possible : fullpos) {
                             if (possible != avoidable) {
-                                Legal.add(possible);
+                                Legal[a] = possible;
+                                a++;
                             }
                         }
                         node.AddChild(GenerateTree(counter, new StaticNode(posy, posx), Legal));
@@ -61,8 +63,8 @@ public class MinimaxSnake extends SnakePlayer {
                         List<int> Legal = new List<int>();
                         for (int possible : fullpos) {
                             if (possible != avoidable) {
-                                Legal.add(possible);
-                            }
+                                Legal[a] = possible;
+                                a++;                            }
                         }
                         node.AddChild(GenerateTree(counter, new StaticNode(posy, posx), Legal));
                     default:
