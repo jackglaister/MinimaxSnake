@@ -28,7 +28,7 @@ public class MinimaxSnake extends SnakePlayer {
     }
     public int[] determineLegal(){
         int[] Legal = new int[4];
-        int[] Potential = {1,2,3,4}
+        int[] Potential = {1,2,3,4};
         for (int loop : Potential){
             if(state.isLegalMove(this, loop) {
                 int posy = state.getPlayerY(index).get(0);
