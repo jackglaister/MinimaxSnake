@@ -56,9 +56,9 @@ public class MinimaxSnake extends SnakePlayer {
             }
         }
     }
-    public static TraverseAndFill(StaticNode node, int counter){
+    public void TraverseAndFill(StaticNode node, int counter){
         if (counter < 40 && newRoot.Children.size() == 0){
-            node =     public StaticNode GenerateTree(counter,node,moves);
+            node = public StaticNode GenerateTree(counter,node,moves);
         }
     }
     public int PickOptimum(){
