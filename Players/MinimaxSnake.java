@@ -75,7 +75,9 @@ public class MinimaxSnake extends SnakePlayer {
         }
         return RootNode;
     }
-    public void doMove();
+    public void doMove(){
+        return;
+    }
 }
     /**
     public StaticNode FindOptimum(StaticNode RootNode){
