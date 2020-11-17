@@ -26,7 +26,7 @@ public class MinimaxSnake extends SnakePlayer {
     public void doMove(){
         return;
     }
-    public int[] determineLegal(moves){
+    public int[] determineLegal(){
         int[] Legal = new int[4];
         for (int loop : {1,2,3,4}){
             if(state.isLegalMove(this, loop) {
