@@ -1,4 +1,6 @@
-public class StaticNode extends MMNode{}{
+import java.util.List;
+
+public class StaticNode extends MMNode{
     public int PosY;
     public int PosX;
     public String move;
