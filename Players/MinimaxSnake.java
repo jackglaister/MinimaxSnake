@@ -26,7 +26,7 @@ public class MinimaxSnake extends SnakePlayer{
                 int posy = state.getPlayerY(index).get(0);
                 int posx = state.getPlayerX(index).get(0);
                 int avoidable = state.getLastOrientation(index);
-                int[] fullpos = [1,2,3,4];
+                int[] fullpos = {1,2,3,4};
                 switch (move) {
                     case 1:
                         posy++;
