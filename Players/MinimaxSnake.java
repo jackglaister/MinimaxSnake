@@ -10,6 +10,8 @@ public class MinimaxSnake extends SnakePlayer {
      * protected int index;
      **/
 
+    public StaticNode newRoot;
+
     public MinimaxSnake(GameState state, int index, Snake game) {
         super(state, index, game);
     }
@@ -18,64 +20,50 @@ public class MinimaxSnake extends SnakePlayer {
         if (level < 40) {
             int counter = level;
             counter++;
-            for (int move : moves) {
+        }
+        return RootNode;
+    }
+    public void doMove(){
+        return;
+    }
+    public int[] determineLegal(moves){
+        int[] Legal = new int[4];
+        for (int loop : {1,2,3,4}){
+            if(state.isLegalMove(this, loop) {
                 int posy = state.getPlayerY(index).get(0);
                 int posx = state.getPlayerX(index).get(0);
                 int avoidable = state.getLastOrientation(index);
-                int[] fullpos = {1, 2, 3, 4};
-                int a = 0;
-                int[] Legal = new int[4];
-                switch (move) {
+                switch (loop) {
                     case 1:
                         posy++;
-                        for (int possible : fullpos) {
-                            if (possible != avoidable) {
-                                Legal[a] = possible;
-                                a++;
-                            }
-                        }
                         node.AddChild(GenerateTree(counter, new StaticNode(posy, posx), Legal));
                         break;
                     case 2:
-                        posx--;;
-                        for (int possible : fullpos) {
-                            if (possible != avoidable) {
-                                Legal[a] = possible;
-                                a++;
-                            }
-                        }
-                        node.AddChild(GenerateTree(counter, new StaticNode(posy, posx), Legal));
+                        posx--;
+                        ;node.AddChild(GenerateTree(counter, new StaticNode(posy, posx), Legal));
                         break;
                     case 3:
                         posy--;
-                        List<int> Legal = new List<int>();
-                        for (int possible : fullpos) {
-                            if (possible != avoidable) {
-                                Legal[a] = possible;
-                                a++;
-                            }
-                        }
                         node.AddChild(GenerateTree(counter, new StaticNode(posy, posx), Legal));
                         break;
                     case 4:
                         posx++;
-                        node.AddChild(new StaticNode(posy, posx));
-                        List<int> Legal = new List<int>();
-                        for (int possible : fullpos) {
-                            if (possible != avoidable) {
-                                Legal[a] = possible;
-                                a++;                            }
-                        }
                         node.AddChild(GenerateTree(counter, new StaticNode(posy, posx), Legal));
                     default:
                         break;
                 }
             }
         }
-        return RootNode;
     }
-    public void doMove(){
-        return;
+    public static TraverseAndFill(StaticNode node, int counter){
+        if (counter < 40 && newRoot.Children.size() == 0){
+            node =     public StaticNode GenerateTree(counter,node,moves);
+        }
+    }
+    public int PickOptimum(){
+        try{
+            newRoot = TraverseAndFill(newRoot, 0);
+        }
     }
 }
     /**
