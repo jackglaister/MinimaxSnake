@@ -65,6 +65,9 @@ public class MinimaxSnake extends SnakePlayer {
         try{
             newRoot = TraverseAndFill(newRoot, 0);
         }
+        catch{
+            newRoot = TraverseAndFill(new StaticNode(posy,posx));
+        }
     }
 }
     /**
