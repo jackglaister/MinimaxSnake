@@ -1,8 +1,5 @@
-import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
-import java.util.PriorityQueue;
+import java.util.ArrayList;
 import snake.GameState;
 import snake.Snake;
 
@@ -18,7 +15,7 @@ public class MinimaxSnake extends SnakePlayer {
         super(state, index, game);
     }
 
-    public StaticNode GenerateTree(int level, StaticNode node, List<int> moves) {
+    public StaticNode GenerateTree(int level, StaticNode node, ArrayList<int> moves) {
         if (level < 40) {
             int counter = level;
             counter++;
