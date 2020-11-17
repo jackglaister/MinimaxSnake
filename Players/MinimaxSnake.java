@@ -14,7 +14,7 @@ public class MinimaxSnake extends SnakePlayer{
     protected int index;
 **/
 
-    public HumanPlayer(GameState state, int index, Snake game) {
+    public MinimaxSnake(GameState state, int index, Snake game) {
         super(state, index, game);
     }
 
