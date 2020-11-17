@@ -24,7 +24,7 @@ public class MinimaxSnake extends SnakePlayer {
                 int avoidable = state.getLastOrientation(index);
                 int[] fullpos = {1, 2, 3, 4};
                 int a = 0;
-                int[] Legal = new int[4]();
+                int[] Legal = new int[4];
                 switch (move) {
                     case 1:
                         posy++;
