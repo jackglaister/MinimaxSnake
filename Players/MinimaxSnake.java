@@ -76,6 +76,7 @@ public class MinimaxSnake extends SnakePlayer{
         return RootNode;
     }
 
+    /**
     public StaticNode FindOptimum(StaticNode RootNode){
         int foodX = state.getTargetX(); int foodY = state.getTargetY();
 
@@ -123,6 +124,8 @@ public class MinimaxSnake extends SnakePlayer{
     }
     public abstract void doMove();
 }
+
+**/
 
 /**
  The optimisation function should allow for the snake to be able to have a higher chance of winning.

@@ -35,13 +35,13 @@ public class HumanPlayer extends SnakePlayer implements KeyListener {
     public void keyPressed(KeyEvent e) {
         int lastOrientation = state.getLastOrientation(index);
         if (e.getKeyCode() == KeyEvent.VK_UP && lastOrientation!= GameState.SOUTH) {            
-            state.setOrientation(index,,GameState.NORTH);
+            state.setOrientation(index, GameState.NORTH);
         }
         else if(e.getKeyCode() == KeyEvent.VK_DOWN && lastOrientation!= GameState.NORTH) {
-            state.setOrientation(index,,GameState.SOUTH);
+            state.setOrientation(index, GameState.SOUTH);
         }
         else if(e.getKeyCode() == KeyEvent.VK_RIGHT && lastOrientation!= GameState.WEST) {
-            state.setOrientation(index,,GameState.EAST);
+            state.setOrientation(index, GameState.EAST);
         }
         else if(e.getKeyCode() == KeyEvent.VK_LEFT && lastOrientation!= GameState.EAST) {            
             state.setOrientation(index, GameState.WEST);
