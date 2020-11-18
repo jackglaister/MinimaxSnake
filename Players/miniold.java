@@ -20,7 +20,7 @@ public class MinimaxPlayer extends SnakePlayer {
 
     public StaticNode GenerateTree(int level, StaticNode node) {
         if (level < 10) {
-            for (int i = 0; i < Snake.players.size(); i++) {
+            for (int i = 0; i < players.size(); i++) {
                 int counter = level;
                 node = node.addLegalChildren(node, i*level, state, i);
                 for (StaticNode child : node.Children){
@@ -34,7 +34,7 @@ public class MinimaxPlayer extends SnakePlayer {
         return;
     }
 
-    public StaticNode addLegalChildren(StaticNode node, int counter, SnakePlayer[] currentSnakes, int current){
+    public StaticNode addLegalChildren(StaticNode node, int counter, GameState currentState, int current){
         int[] Legal = new int[4];
         int[] Potential = {1,2,3,4};
         for (int loop : Potential){
