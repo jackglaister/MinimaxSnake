@@ -15,6 +15,7 @@ import snake.Snake;
 public abstract class SnakePlayer {
     protected GameState state;
     protected GameDisplay display;    
+    protected SnakePlayer[] players;
     protected Snake game;
     protected int index;
     
