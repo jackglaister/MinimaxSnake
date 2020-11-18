@@ -77,7 +77,7 @@ public class MinimaxPlayer extends SnakePlayer {
     }
     public int PickOptimum(){
         try{
-            newRoot = TraverseAndFill(newRoot, 0, state, current);
+            newRoot = TraverseAndFill(newRoot, 0);
         }
         catch (Exception e) {
             newRoot = TraverseAndFill(new StaticNode(players), 0);
