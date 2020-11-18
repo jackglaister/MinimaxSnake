@@ -20,7 +20,7 @@ public class MinimaxPlayer extends SnakePlayer {
 
     public StaticNode GenerateTree(int level, StaticNode node) {
         if (level < 10) {
-            for (int i = 0; i < game.players.size(); i++) {
+            for (int i = 0; i < Snake.players.size(); i++) {
                 int counter = level;
                 node = node.addLegalChildren(game.Players,i);
                 for (StaticNode child : node.Children){
@@ -33,11 +33,12 @@ public class MinimaxPlayer extends SnakePlayer {
     public void doMove(){
         return;
     }
-    public StaticNode addLegalChildren(SnakePlayer currentSnakes, int current){
+
+    public StaticNode addLegalChildren(StaticNode node, int counter, SnakePlayer currentSnakes, int current){
         int[] Legal = new int[4];
         int[] Potential = {1,2,3,4};
         for (int loop : Potential){
-            if(state.isLegalMove(this, loop)) {
+            if(state.isLegalMove(current, loop)) {
                 int posy = state.getPlayerY(index).get(current);
                 int posx = state.getPlayerX(index).get(current);
                 int avoidable = state.getLastOrientation(index);
@@ -63,17 +64,18 @@ public class MinimaxPlayer extends SnakePlayer {
             }
         }
     }
-    public void TraverseAndFill(StaticNode node, int counter){
+    public StaticNode TraverseAndFill(StaticNode node, int counter){
         if (counter < 40 && newRoot.Children.size() == 0){
-            node = GenerateTree(counter,node,moves);
+            node = GenerateTree(counter,node);
         }
+        return node;
     }
     public int PickOptimum(){
         try{
             newRoot = TraverseAndFill(newRoot, 0);
         }
         catch (Esception e) {
-            newRoot = TraverseAndFill(new StaticNode(posy,posx));
+            newRoot = TraverseAndFill(new StaticNode(Snake.players), 0);
         }
     }
 }
