@@ -46,22 +46,22 @@ public class MinimaxPlayer extends SnakePlayer {
                     case 1:
                         posy++;
                         currentState.PlayerY(current).set(0,currentState.getPlayerY(current).get(0)+1);
-                        node.AddChild(GenerateTree(counter, new StaticNode(currentSnakes), Legal));
+                        node.AddChild(GenerateTree(counter, new StaticNode(currentSnakes)));
                         break;
                     case 2:
                         posx--;
                         currentState.PlayerX(current).set(0,currentState.getPlayerX(current).get(0)-1);
-                        node.AddChild(GenerateTree(counter, new StaticNode(currentSnakes), Legal));
+                        node.AddChild(GenerateTree(counter, new StaticNode(currentSnakes)));
                         break;
                     case 3:
                         posy--;
                         currentState.PlayerY(current).set(0,currentState.getPlayerY(current).get(0)-1);
-                        node.AddChild(GenerateTree(counter, new StaticNode(currentSnakes), Legal));
+                        node.AddChild(GenerateTree(counter, new StaticNode(currentSnakes)));
                         break;
                     case 4:
                         posx++;
                         currentState.PlayerX(current).set(0,currentState.getPlayerX(current).get(0)+1);
-                        node.AddChild(GenerateTree(counter, new StaticNode(currentSnakes), Legal));
+                        node.AddChild(GenerateTree(counter, new StaticNode(currentSnakes)));
                     default:
                         break;
                 }
