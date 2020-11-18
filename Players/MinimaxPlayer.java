@@ -34,7 +34,7 @@ public class MinimaxPlayer extends SnakePlayer {
         return;
     }
 
-    public StaticNode addLegalChildren(StaticNode node, int counter, GameState currentState, int current){
+    public StaticNode addLegalChildren(StaticNode node, int counter, SnakePlayer[] currentSnakes, int current){
         int[] Legal = new int[4];
         int[] Potential = {1,2,3,4};
         for (int loop : Potential){
