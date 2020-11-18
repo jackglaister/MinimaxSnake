@@ -1,3 +1,5 @@
+package players;
+
 import java.util.List;
 import snake.GameState;
 import snake.Snake;

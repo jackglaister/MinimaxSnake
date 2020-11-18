@@ -1,3 +1,4 @@
+package players;
 import java.util.List;
 
 public class StaticNode extends MMNode{
