@@ -22,7 +22,7 @@ public class MinimaxPlayer extends SnakePlayer {
         if (level < 10) {
             for (int i = 0; i < Snake.players.size(); i++) {
                 int counter = level;
-                node = node.addLegalChildren(game.Players,i);
+                node = node.addLegalChildren(node, i*level, state, i);
                 for (StaticNode child : node.Children){
                     child = GenerateTree(counter+1,child);
                 }
@@ -34,35 +34,40 @@ public class MinimaxPlayer extends SnakePlayer {
         return;
     }
 
-    public StaticNode addLegalChildren(StaticNode node, int counter, SnakePlayer currentSnakes, int current){
+    public StaticNode addLegalChildren(StaticNode node, int counter, GameState currentState, int current){
         int[] Legal = new int[4];
         int[] Potential = {1,2,3,4};
         for (int loop : Potential){
             if(state.isLegalMove(current, loop)) {
-                int posy = state.getPlayerY(index).get(current);
-                int posx = state.getPlayerX(index).get(current);
+                int posy = currentState.getPlayerY(current).get(0);
+                int posx = currentState.getPlayerX(current).get(0);
                 int avoidable = state.getLastOrientation(index);
                 switch (loop) {
                     case 1:
                         posy++;
+                        currentState.PlayerY(current).set(0,currentState.getPlayerY(current).get(0)+1);
                         node.AddChild(GenerateTree(counter, new StaticNode(currentSnakes), Legal));
                         break;
                     case 2:
                         posx--;
-                        ;node.AddChild(GenerateTree(counter, new StaticNode(currentSnakes), Legal));
+                        currentState.PlayerX(current).set(0,currentState.getPlayerX(current).get(0)-1);
+                        node.AddChild(GenerateTree(counter, new StaticNode(currentSnakes), Legal));
                         break;
                     case 3:
                         posy--;
+                        currentState.PlayerY(current).set(0,currentState.getPlayerY(current).get(0)-1);
                         node.AddChild(GenerateTree(counter, new StaticNode(currentSnakes), Legal));
                         break;
                     case 4:
                         posx++;
+                        currentState.PlayerX(current).set(0,currentState.getPlayerX(current).get(0)+1);
                         node.AddChild(GenerateTree(counter, new StaticNode(currentSnakes), Legal));
                     default:
                         break;
                 }
             }
         }
+        return node;
     }
     public StaticNode TraverseAndFill(StaticNode node, int counter){
         if (counter < 40 && newRoot.Children.size() == 0){
@@ -72,11 +77,12 @@ public class MinimaxPlayer extends SnakePlayer {
     }
     public int PickOptimum(){
         try{
-            newRoot = TraverseAndFill(newRoot, 0);
+            newRoot = TraverseAndFill(newRoot, 0, state, current);
         }
-        catch (Esception e) {
+        catch (Exception e) {
             newRoot = TraverseAndFill(new StaticNode(Snake.players), 0);
         }
+
     }
 }
     /**
