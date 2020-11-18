@@ -24,7 +24,7 @@ public class MinimaxPlayer extends SnakePlayer {
                 int counter = level;
                 node = node.addLegalChildren(game.Players,i);
                 for (StaticNode child : node.Children){
-                    child = GenerateTree(counter+1,child)
+                    child = GenerateTree(counter+1,child);
                 }
             }
         }
