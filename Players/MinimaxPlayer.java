@@ -15,7 +15,7 @@ public class MinimaxPlayer extends SnakePlayer {
     public StaticNode newRoot;
 
     public MinimaxPlayer(GameState state, int index, Snake game) {
-        super(state, index, game);
+        super(state, index, game, players);
     }
 
     public StaticNode GenerateTree(int level, StaticNode node) {
@@ -80,7 +80,7 @@ public class MinimaxPlayer extends SnakePlayer {
             newRoot = TraverseAndFill(newRoot, 0, state, current);
         }
         catch (Exception e) {
-            newRoot = TraverseAndFill(new StaticNode(Snake.players), 0);
+            newRoot = TraverseAndFill(new StaticNode(players), 0);
         }
 
     }
