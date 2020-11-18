@@ -4,7 +4,7 @@ import java.util.List;
 public class StaticNode extends MMNode{
     public String move;
     public List<StaticNode> Children;
-    public StaticNode(List<SnakePlayer> snakes){
+    public StaticNode(SnakePlayer[] snakes){
         Snakes = snakes;
     }
     public void AddChild(StaticNode child){
