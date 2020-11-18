@@ -2,7 +2,7 @@ import java.util.List;
 import snake.GameState;
 import snake.Snake;
 
-public class MinimaxSnake extends SnakePlayer {
+public class MinimaxPlayer extends SnakePlayer {
     /**
      * protected GameState state;
      * protected GameDisplay display;
@@ -12,7 +12,7 @@ public class MinimaxSnake extends SnakePlayer {
 
     public StaticNode newRoot;
 
-    public MinimaxSnake(GameState state, int index, Snake game) {
+    public MinimaxPlayer(GameState state, int index, Snake game) {
         super(state, index, game);
     }
 
