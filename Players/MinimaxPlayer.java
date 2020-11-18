@@ -14,7 +14,7 @@ public class MinimaxPlayer extends SnakePlayer {
 
     public StaticNode newRoot;
 
-    public MinimaxPlayer(GameState state, int index, Snake game) {
+    public MinimaxPlayer(GameState state, int index, Snake game, SnakePlayer[] players) {
         super(state, index, game, players);
     }
 
