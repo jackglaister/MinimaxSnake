@@ -16,40 +16,45 @@ public class MinimaxSnake extends SnakePlayer {
         super(state, index, game);
     }
 
-    public StaticNode GenerateTree(int level, StaticNode node, int[] moves) {
-        if (level < 40) {
-            int counter = level;
-            counter++;
+    public StaticNode GenerateTree(int level, StaticNode node) {
+        if (level < 10) {
+            for (int i = 0; i < game.players.size(); i++) {
+                int counter = level;
+                node = node.addLegalChildren(game.Players,i);
+                for (StaticNode child : node.Children){
+                    child = GenerateTree(counter+1,child)
+                }
+            }
         }
-        return RootNode;
+        return node;
     }
     public void doMove(){
         return;
     }
-    public int[] determineLegal(){
+    public StaticNode addLegalChildren(SnakePlayer currentSnakes, int current){
         int[] Legal = new int[4];
         int[] Potential = {1,2,3,4};
         for (int loop : Potential){
             if(state.isLegalMove(this, loop)) {
-                int posy = state.getPlayerY(index).get(0);
-                int posx = state.getPlayerX(index).get(0);
+                int posy = state.getPlayerY(index).get(current);
+                int posx = state.getPlayerX(index).get(current);
                 int avoidable = state.getLastOrientation(index);
                 switch (loop) {
                     case 1:
                         posy++;
-                        node.AddChild(GenerateTree(counter, new StaticNode(posy, posx), Legal));
+                        node.AddChild(GenerateTree(counter, new StaticNode(currentSnakes), Legal));
                         break;
                     case 2:
                         posx--;
-                        ;node.AddChild(GenerateTree(counter, new StaticNode(posy, posx), Legal));
+                        ;node.AddChild(GenerateTree(counter, new StaticNode(currentSnakes), Legal));
                         break;
                     case 3:
                         posy--;
-                        node.AddChild(GenerateTree(counter, new StaticNode(posy, posx), Legal));
+                        node.AddChild(GenerateTree(counter, new StaticNode(currentSnakes), Legal));
                         break;
                     case 4:
                         posx++;
-                        node.AddChild(GenerateTree(counter, new StaticNode(posy, posx), Legal));
+                        node.AddChild(GenerateTree(counter, new StaticNode(currentSnakes), Legal));
                     default:
                         break;
                 }
