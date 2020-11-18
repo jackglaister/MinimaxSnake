@@ -1,3 +1,6 @@
+package player;
+import java.util.List;
+
 public abstract class MMNode{
-    MMNode[] children;
+    public List<SnakePlayer> Snakes;
 }
