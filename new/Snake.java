@@ -20,9 +20,6 @@ public class Snake {
         startGUIGame();
     }
 
-    public SnakePlayer[] getPlayers(){
-        return players;
-    }
     public void startGUIGame() throws Exception {
         state = new GameState(nrPlayers, 20, 20);
         showGUI = true;
@@ -31,9 +28,9 @@ public class Snake {
         players = new SnakePlayer[nrPlayers];
         players[0] = new HumanPlayer(state, 0, this);
         players[1] = new AStarPlayer(state, 1, this);
-//        players[2] = new RandomPlayer(state, 2, this);
+        players[2] = new RandomPlayer(state, 2, this);
         players[3] = new AStarPlayer(state, 3, this);
-        players[2] = new MinimaxPlayer(state,3, this);
+
         for (int i = 0; i < nrPlayers; i++) {
             players[i].setDisplay(display);
         }

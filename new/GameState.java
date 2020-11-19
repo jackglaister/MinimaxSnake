@@ -65,10 +65,6 @@ public class GameState {
         stepCount = st.stepCount;
     }
 
-    public void incrementPlayerY(int current){
-        this.playerY[current].set(0,this.getPlayerY(current).get(0)+1);
-    }
-
     public GameState(int nrPlayers, int width, int height) throws Exception {
         this.width = width;
         this.height = height;

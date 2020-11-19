@@ -6,7 +6,7 @@ public class StaticNode extends MMNode{
     public StaticNode(SnakePlayer[] snakes){
         Snakes = snakes;
     }
-    public void AddChild(StaticNode child){
+    public void AddChild(MMNode child){
         Children.add(child);
     }
 }

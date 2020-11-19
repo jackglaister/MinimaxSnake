@@ -12,18 +12,18 @@ public class MinimaxPlayer extends SnakePlayer {
      * protected int index;
      **/
 
-    public StaticNode newRoot;
+    public MMNode newRoot;
 
-    public MinimaxPlayer(GameState state, int index, Snake game, SnakePlayer[] players) {
-        super(state, index, game, players);
+    public MinimaxPlayer(GameState state, int index, Snake game) {
+        super(state, index, game);
     }
 
-    public StaticNode GenerateTree(int level, StaticNode node) {
+    public MMNode GenerateTree(int level, MMNode node) {
         if (level < 10) {
-            for (int i = 0; i < players.size(); i++) {
+            for (int i = 0; i < players.length; i++) {
                 int counter = level;
-                node = node.addLegalChildren(node, i*level, state, i);
-                for (StaticNode child : node.Children){
+                node = addLegalChildren(node, i*level, state, i, node.Snakes);
+                for (MMNode child : node.Children){
                     child = GenerateTree(counter+1,child);
                 }
             }
@@ -34,7 +34,7 @@ public class MinimaxPlayer extends SnakePlayer {
         return;
     }
 
-    public StaticNode addLegalChildren(StaticNode node, int counter, GameState currentState, int current){
+    public MMNode addLegalChildren(MMNode node, int counter, GameState currentState, int current, SnakePlayer[] currentSnakes){
         int[] Legal = new int[4];
         int[] Potential = {1,2,3,4};
         for (int loop : Potential){
@@ -45,23 +45,23 @@ public class MinimaxPlayer extends SnakePlayer {
                 switch (loop) {
                     case 1:
                         posy++;
-                        currentState.PlayerY(current).set(0,currentState.getPlayerY(current).get(0)+1);
-                        node.AddChild(GenerateTree(counter, new StaticNode(currentSnakes)));
+                        currentState.incrementPlayerY(current);
+                        node.AddChild(GenerateTree(counter,new StaticNode(currentSnakes)));
                         break;
                     case 2:
                         posx--;
-                        currentState.PlayerX(current).set(0,currentState.getPlayerX(current).get(0)-1);
-                        node.AddChild(GenerateTree(counter, new StaticNode(currentSnakes)));
+//                        currentState.PlayerX(current).set(0,currentState.getPlayerX(current).get(0)-1);
+//                        node.AddChild(GenerateTree(counter, new StaticNode(currentSnakes)));
                         break;
                     case 3:
                         posy--;
-                        currentState.PlayerY(current).set(0,currentState.getPlayerY(current).get(0)-1);
-                        node.AddChild(GenerateTree(counter, new StaticNode(currentSnakes)));
+//                        currentState.PlayerY(current).set(0,currentState.getPlayerY(current).get(0)-1);
+//                        node.AddChild(GenerateTree(counter, new StaticNode(currentSnakes)));
                         break;
                     case 4:
                         posx++;
-                        currentState.PlayerX(current).set(0,currentState.getPlayerX(current).get(0)+1);
-                        node.AddChild(GenerateTree(counter, new StaticNode(currentSnakes)));
+//                        currentState.PlayerX(current).set(0,currentState.getPlayerX(current).get(0)+1);
+//                        node.AddChild(GenerateTree(counter, new StaticNode(currentSnakes)));
                     default:
                         break;
                 }
@@ -69,7 +69,7 @@ public class MinimaxPlayer extends SnakePlayer {
         }
         return node;
     }
-    public StaticNode TraverseAndFill(StaticNode node, int counter){
+    public MMNode TraverseAndFill(MMNode node, int counter){
         if (counter < 40 && newRoot.Children.size() == 0){
             node = GenerateTree(counter,node);
         }
@@ -80,9 +80,9 @@ public class MinimaxPlayer extends SnakePlayer {
             newRoot = TraverseAndFill(newRoot, 0);
         }
         catch (Exception e) {
-            newRoot = TraverseAndFill(new StaticNode(players), 0);
+            newRoot = TraverseAndFill(new StaticNode(game.getPlayers()), 0);
         }
-
+        return 5;
     }
 }
     /**
